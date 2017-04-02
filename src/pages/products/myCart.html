@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>My Cart</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <div *ngIf="selectedItemsCount == 0">
+        <ion-label color="primary">No items found in your cart</ion-label>
+        <br/>
+         <button ion-button (click)="navigateToProducts()">Continue Shopping</button>
+    </div>
+    <div *ngIf="selectedItemsCount > 0">
+        <ion-list>
+            <ion-item *ngFor="let selproduct of selProducts" text-wrap>
+                <div class="row">
+                    <div class="col">
+                        <img src="{{selproduct.product.imageUrl}}" alt="Product" />
+                        <h3>{{selproduct.product.name}}</h3>
+                    </div>
+                    <div class="col">
+                        <input style="width: 30px" type="text" [(ngModel)]="selproduct.qty" (ngModelChange)="updateTotalPrice()" />
+                    </div>
+                    <div class="col">
+                        {{selproduct.qty * selproduct.product.price}}
+                    </div>
+                    <div class="col">
+                        <a (click)="removeProductFromCart(selproduct);">
+                            <ion-icon name="trash"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </ion-item>
+            <ion-item text-wrap>
+                <div class="row">
+                    <div class="col">
+                    </div>
+                    <div class="col" style="align-items: center">
+                        <h3><strong>Total</strong></h3>
+                    </div>
+                    <div class="col" style="align-content: center">
+                        {{totalPrice}}
+                    </div>
+                </div>
+            </ion-item>
+            <ion-item text-wrap>
+                <!--<button ion-button style="float: right" [navPush]="userDetailsPage">-->
+                <button ion-button style="float: right" (click)="navigateToUserDetails()">
+                Purchase
+            </button>
+            </ion-item>
+        </ion-list>
+    </div>
+    <!--<div *ngIf="purchageForm">
+        <ion-list>
+            <ion-item>
+                <ion-label style="font-size: 2rem;" color="primary" stacked>Please enter Details</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" stacked>Name</ion-label>
+                <ion-input type="text" placeholder="please enter name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" stacked>Email</ion-label>
+                <ion-input type="email" placeholder="please enter email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" stacked>Phone</ion-label>
+                <ion-input type="text" placeholder="please enter phone"></ion-input>
+            </ion-item>
+            <ion-item>
+                <button ion-button style="float: right">
+                Submit
+            </button>
+            </ion-item>
+        </ion-list>
+    </div>-->
+</ion-content>

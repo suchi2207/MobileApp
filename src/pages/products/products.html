@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-title>
+      <table style="width: 100%">
+        <tr>
+          <td>
+            <ion-searchbar [(ngModel)]="productSearch" placeholder="Search for Products" [showCancelButton]="false" (ionInput)="searchProducts($event)">
+            </ion-searchbar>
+          </td>
+          <td>
+            <div style="float: right">
+              <a style="text-decoration: none;font-size: 15px" [navPush]="myCartPage">
+                <ion-icon name="cart"></ion-icon>
+                <ion-icon>{{selectedProductCount}}</ion-icon>
+              </a>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-spinner name="bubbles" *ngIf="page_loder"></ion-spinner>
+  <ion-list>
+    <ion-item *ngFor="let product of products" text-wrap>
+      <div class="row">
+        <div class="col">
+          <img src="{{product.imageUrl}}" alt="Product" />
+        </div>
+        <div class="col">
+          <h3>{{product.name}}</h3>
+          <p>{{product.price | currency:'INR':true:'1.2-2'}}</p>
+          <p><strong>Category: </strong>{{product.category}}</p>
+          <button ion-button (click)="AddProductToCart(product);">Add to Cart</button>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

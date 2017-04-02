@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar hideBackButton="true">
+        <ion-title>Customer Details</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <div *ngIf="isSubmitted">
+         <ion-label color="primary">Your order has been placed successfully</ion-label>
+         <br/>
+         <button ion-button (click)="navigateToProducts()">Continue Shopping</button>
+    </div>
+    <div *ngIf="!isSubmitted">
+        <form [formGroup]="userDetailsForm">
+        <ion-list>
+            <ion-item>
+                <ion-label style="font-size: 2rem;" color="primary" stacked>Please enter details</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" stacked>Name</ion-label>
+                <ion-input formControlName="UserName"  [(ngModel)]="UserName" type="text" placeholder="please enter name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" stacked>Email</ion-label>
+                <ion-input type="email" formControlName="UserEmail"  [(ngModel)]="UserEmail" placeholder="please enter email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" stacked>Phone</ion-label>
+                <ion-input type="text" formControlName="UserPhone"  [(ngModel)]="UserPhone" placeholder="please enter phone"></ion-input>
+            </ion-item>
+            <ion-item>
+                <button ion-button style="float: right" [disabled]="!userDetailsForm.valid" (click)="isSubmitted = !isSubmitted">
+                Submit
+            </button>
+            </ion-item>
+        </ion-list>
+        </form>
+    </div>
+</ion-content>
