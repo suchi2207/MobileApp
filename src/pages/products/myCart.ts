@@ -49,7 +49,7 @@ export class myCartPage {
         }
     }
     navigateToUserDetails() {
-        this.nav.push(userDetailsPage, { firstname: "Srinivas", lastname: "Ganaparthi" }
+        this.nav.push(userDetailsPage, { firstname: "Sulochana", lastname: "K" }
         );
     }
 

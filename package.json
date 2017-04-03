@@ -22,6 +22,7 @@
     "@ionic-native/core": "^3.2.4",
     "@ionic-native/geolocation": "^3.2.4",
     "@ionic-native/toast": "^3.2.4",
+    "@ionic/cloud-angular": "^0.11.0",
     "@ionic/storage": "2.0.0",
     "ionic-angular": "2.2.0",
     "ionic-native": "2.8.1",
